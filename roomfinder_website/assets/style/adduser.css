@@ -1,0 +1,136 @@
+/*Add User*/
+.roleform{
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: auto;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.roleform input {
+    margin: 5px;
+    padding: 10px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid #28773f;
+}
+
+.roleform select {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px; 
+    background-color: #DAFFEA;
+    appearance: none;   /* Remove default dropdown arrow */
+    -webkit-appearance: none;  /* For Safari */
+    background-image: url('../images/web-svg-icons/dropdown-arrow-black.svg'); /* Custom arrow image */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px;  /* Add space for the custom arrow */
+    font-weight: bold;
+    width: 100%;
+}
+
+/* AUTHENTICATION */
+.add{
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgb(7, 82, 7);
+    color: white;
+}
+
+.addanother{
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgb(28, 15, 73);
+    color: white;
+}
+
+#role {
+    width: auto;
+}
+
+.addUserButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.addUserButtons button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#adduser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.adduser-container {
+    display: flex;
+    gap: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .roleform {
+        width: 100%;
+    }
+
+    .adduser-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .adduser-container img {
+        width: 100%;
+        padding: 30px;
+    }
+
+    #addUserForm {
+        margin: 10px;
+        padding: 0;
+    }
+
+    .roleform {
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        margin-top: 3%;
+        text-align: center;
+    }
+
+    .roleform input {
+        margin: 5px;
+        padding: 10px;
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid #28773f;
+    }
+
+    .addUserButtons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+}

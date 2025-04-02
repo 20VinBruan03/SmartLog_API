@@ -1,0 +1,149 @@
+<section id="dashboard" class="section-content hidden">
+	<!-- DASHBOARD -->
+	<div id="grid-container">
+		<!-- Requests Section -->
+		<div class="statContainer">
+			<div class="stats-box">
+				<div style="text-align: center">
+					<h2 id="totalRequests">0</h2>
+					<p>Requests</p>
+				</div>
+				<img
+					src="assets/images/web-svg-icons/request-count-icon.svg"
+					alt="Requests Icon" />
+			</div>
+		</div>
+
+		
+		<div class="requestforms" id="approvedRequestBox">
+			<div class="request-box">
+				<div>
+					<h2>Approved Requests</h2>
+					<p id="approvedRequests">0</p>
+					<h3 id="approvedPercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="requestforms" id="pendingRequestBox">
+			<div class="request-box">
+				<div>
+					<h2>Pending Requests</h2>
+					<p id="pendingRequests">0</p>
+					<h3 id="pendingPercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="requestforms" id="rejectedRequestBox">
+			<div class="request-box">
+				<div>
+					<h2>Rejected Requests</h2>
+					<p id="rejectedRequests">0</p>
+					<h3 id="rejectedPercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- Rooms Section -->
+		<div class="statContainer">
+			<div class="stats-box">
+				<div style="text-align: center">
+					<h2 id="totalRooms">0</h2>
+					<p>Rooms</p>
+				</div>
+				<img
+					src="assets/images/web-svg-icons/room-count-icon.svg"
+					alt="Rooms Icon" />
+			</div>
+		</div>
+
+		<div class="requestforms" id="availableRoomBox">
+			<div class="request-box">
+				<div>
+					<h2>Available Rooms</h2>
+					<p id="availableRooms">0</p>
+					<h3 id="availablePercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="requestforms" id="occupiedRoomBox">
+			<div class="request-box">
+				<div>
+					<h2>Occupied Rooms</h2>
+					<p id="occupiedRooms">0</p>
+					<h3 id="occupiedPercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="requestforms" id="closedRoomBox">
+			<div class="request-box">
+				<div>
+					<h2>Closed Rooms</h2>
+					<p id="closedRooms">0</p>
+					<h3 id="closedPercentage">0%</h3>
+				</div>
+				<div class="progress-bar-wrapper">
+					<div class="progress-bar"></div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!-- Ongoing and Recent Request Table-->
+		<div class="roomStats-ongoingroom">
+			<div class="roomStats-ongoing">
+				<h1>Ongoing Schedule</h1>
+				<button class="seeongoingschedule-btn">See All</button>
+			</div>
+			<table id="ongoingSchedule">
+				<thead>
+					<tr>
+						<th>Room</th>
+						<th>Date and Time</th>
+						<th>Block</th>
+					</tr>
+				</thead>
+				<tbody class="table-data"></tbody>
+			</table>
+		</div>
+
+		<div class="roomStats-recent">
+			<div class="roomStats-requests">
+				<h1>Pending Request</h1>
+				<button class="seerequesthistory-btn">See All</button>
+			</div>
+			<table id="requestHistory">
+				<thead>
+					<tr>
+						<th>Teacher</th>
+						<th>Date and Time</th>
+						<th>Block</th>
+					</tr>
+				</thead>
+				<tbody class="table-data"></tbody>
+			</table>
+		</div>
+	</div>
+</section>

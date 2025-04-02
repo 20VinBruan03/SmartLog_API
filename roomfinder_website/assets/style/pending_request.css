@@ -1,0 +1,57 @@
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.pending_request-table td{
+    text-align: center;
+}
+
+.pending_request-table table {
+    padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .pending_request-table tr{
+        margin: 0px;
+        padding: 0px;
+        font-size: 10px;
+    }
+
+    .pending_request-table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+        padding: 10px;
+    }
+    .pending_request-table table{
+        margin: 0px;
+        padding: 15px;
+    }
+
+    .pending_request-table thead {
+        font-size: 12px;
+        width: auto;
+    }
+
+    .approve-btn, .reject-btn {
+        font-size: 12px;
+        padding: 3px 5px;
+        border-radius: 5px;
+    }
+
+    .pendingtableBody {
+        width: 100px;
+    }
+    .pending-request-item td:nth-child(6) {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 17px;
+    }
+}

@@ -1,0 +1,30 @@
+
+
+
+<section id="adduser" class="hidden">
+    <div class="adduser-container">
+        <form id="addUserForm" class="roleform">
+        <h2>Select Role</h2>
+            <select name="roleselector" id="role">
+                <option value="Administrator">Administrator</option>
+                <option value="Staff">Staff</option>
+                <option value="Teacher">Teacher</option>
+            </select><br/>
+    
+            <input type="text" name="username" id="username" placeholder="Username" required><br/>
+            <input type="email" name="email" id="email" placeholder="Email" required><br/>
+            <input type="password" name="password" id="password" placeholder="Password" required><br/>
+            <input type="password" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" required><br/>
+            
+            <div id="teacher-id-container" style="display: none;">
+                <input type="text" name="teacherid" id="teacherID" placeholder="Teacher ID"><br/>
+            </div>
+            
+            <div class="addUserButtons">
+                <button class="addBtn" type="button">Add</button>
+                <button class="backBtn" type="button">Back</button>
+            </div>
+        </form>
+        <img src="assets/images/web-svg-icons/add-user-pic.svg" alt="Add user Icon">
+    </div>
+</section>

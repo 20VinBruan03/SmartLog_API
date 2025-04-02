@@ -1,0 +1,3 @@
+RewriteEngine ON
+RewriteRule . api/index.php
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

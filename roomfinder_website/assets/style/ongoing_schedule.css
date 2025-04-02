@@ -1,0 +1,63 @@
+/* ROOM SCHEDULE */
+
+
+.schedule-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+/* Style for the main content of ongoing schedule */
+.ongoing-schedule-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Container for the table */
+.table-wrapper-schedule {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.table-data tr {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 0px;
+}
+
+.table-data td {
+    text-align: center;
+}
+
+/* Status indicators */
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.available {
+    color: green;
+}
+
+.occupied {
+    color: orange;
+}
+
+.closed {
+    color: red;
+}
+
+/* Optional: Padding around the schedule section */
+.room-sched {
+    padding: 20px;
+}

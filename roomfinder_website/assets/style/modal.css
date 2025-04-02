@@ -1,0 +1,199 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 10%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 65%;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 10%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 65%;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-content label {
+    margin-bottom: 5px;
+}
+
+.roomform_container {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+/* Style for form groups */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex: 1 1 45%;
+}
+
+.form-group label {
+    width: 130px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.form-group select,
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #c6f6d5;
+    width: 100%;
+    text-align: left;
+}
+
+/* Center form fields if it's small on mobile */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        padding: 10px;
+    }
+
+    /* On smaller screens, form groups should take full width */
+    .form-group {
+        flex: 1 1 100%;
+        margin-bottom: 15px;
+    }
+
+    .roomform_container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Style for buttons */
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    /* Space from the form elements above */
+    width: auto;
+}
+
+/* Style for back button */
+.backbtn, .closeModalBtn {
+    background-color: #f44336;
+}
+
+.backbtn:hover {
+    background-color: #e53935;
+}
+
+.createbtn {
+    background-color: #4CAF50;
+}
+
+.createbtn:hover {
+    background-color: #45a049;
+}
+
+/* For horizontal layout of select elements */
+.form-group-horizontal {
+    display: flex;
+    justify-content: space-evenly;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+
+/* Container for checkboxes */
+
+
+/* Ensure each label and checkbox align horizontally */
+.equipment label {
+    align-items: center;
+    font-size: 14px;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+/* Adjust checkbox size and add space between checkbox and text */
+.equipment input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+}
+
+/* Ensure the checkboxes are horizontally aligned */
+.equipment input[type="checkbox"]:first-child {
+    margin-left: 0;
+}
+
+/* For mobile devices, stack checkboxes vertically */
+@media (max-width: 600px) {
+    .equipment {
+        flex-direction: column;
+        /* Stack checkboxes vertically on small screens */
+        gap: 10px;
+        /* Reduced gap between checkboxes */
+    }
+}
+
+.custom-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('../images/web-svg-icons/dropdown-arrow-black.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 40px;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.time label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.roomdetails_form input,
+.roomdetails_form select {
+    margin-bottom: 15px;
+}
+

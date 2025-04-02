@@ -1,0 +1,146 @@
+<section id="room_schedule" class="hidden">
+	<div class="schedule-content">
+		<!-- Floating Search Bar -->
+		<div class="search-container">
+			<i class="fa fa-search"></i>
+			<input
+				type="text"
+				id="searchInput"
+				placeholder="Search here..."
+				onkeyup="searchTable()" />
+		</div>
+
+		<div class="room-table-container">
+			<h2>CITE</h2>
+			<div class="table-wrapper-schedule">
+				<table id="room-sched">
+					<tr>
+						<th class="room-name-header">Room Bldg.</th>
+						<th class="ongoing-schedule-header">Room Number</th>
+						<th class="ongoing-schedule-header">Date and Time</th>
+						<th class="status-header">Block</th>
+						<th class="action-header">Action</th>
+					</tr>
+
+					<tbody class="table-data" align="center"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="floating-btn create-new-sched-btn">+</div>
+
+	<!-- Add Schedule Modal -->
+	<div id="modal" class="modal" data-schedule-id="">
+		<div class="modals">
+			<div class="modal-header">
+				<h2>Schedule Details</h2>
+				<span class="closemodal">&times;</span>
+			</div>
+			<br>
+			<form action="#" method="POST" class="roomdetails_form" id="addscheduletoroomform">
+				  <!-- Room Building Dropdown -->
+				  <label for="roomBldg">Room Bldg:</label>
+				  <select name="roomBldg" id="roomBldg">
+					  <option value="">Select Room Building</option>
+					  <!-- Room buildings will be populated dynamically -->
+				  </select>
+				  
+				  <!-- Room Number Dropdown -->
+				  <label for="roomNumber">Room Number:</label>
+				  <select name="roomNumber" id="roomNumber">
+					  <option value="">Select Room Number</option>
+					  <!-- Room numbers will be populated dynamically based on the selected building -->
+				  </select>
+
+				<label>Block:</label>
+				<select name="block" id="block">
+					<option value="Block 1">1</option>
+					<option value="Block 2">2</option>
+					<option value="Block 3">3</option>
+					<option value="Block 4">4</option>
+					<option value="Block 5">5</option>
+					<option value="Block 6">6</option>
+					<option value="Block 7">7</option>
+					<option value="Block 8">8</option>
+					<option value="Block 9">9</option>
+					<option value="Block 10">10</option>
+				</select>
+
+				<label>Date:</label>
+				<input type="date" name="date" id="date"/>
+
+				<label>Time:</label>
+				<div class="form-group-horizontal">
+					<div class="time">
+						<label>Starting Time</label><br />
+						<input type="time" name="timeStart" id="timeStart"/>
+					</div>
+
+					<div class="time">
+						<label>Ending Time</label><br />
+						<input type="time" name="timeEnd" id="timeEnd"/>
+					</div>
+				</div>
+				<div class="modal-actions">
+					<button type="button" class="closeModalBtn">Cancel</button>
+					<button type="submit" class="action-btn">Update</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	  <!-- View / Update Schedule Modal -->
+	  <div id="viewUpdateModal" class="modal">
+        <div class="modals">
+            <div class="modal-header">
+                <h2>Schedule Details</h2>
+                <span class="closemodal">&times;</span>
+            </div>
+            <br>
+            <form action="#" method="POST" class="roomdetails_form" id="updateScheduleForm">
+                <label for="roomBldg">Room Bldg:</label>
+                <input type="text" name="roomBldg" id="viewRoomBldg" readonly>
+
+                <label for="roomNumber">Room Number:</label>
+                <input type="text" name="roomNumber" id="viewRoomNumber" readonly>
+
+                <label>Block:</label>
+				<select name="block" id="viewBlock">
+					<option value="Block 1">1</option>
+					<option value="Block 2">2</option>
+					<option value="Block 3">3</option>
+					<option value="Block 4">4</option>
+					<option value="Block 5">5</option>
+					<option value="Block 6">6</option>
+					<option value="Block 7">7</option>
+					<option value="Block 8">8</option>
+					<option value="Block 9">9</option>
+					<option value="Block 10">10</option>
+				</select>
+
+                <label>Date:</label>
+                <input type="date" name="date" id="viewDate">
+
+                <label>Time:</label>
+                <div class="form-group-horizontal">
+                    <div class="time">
+                        <label>Starting Time</label><br />
+                        <input type="time" name="timeStart" id="viewTimeStart"/>
+                    </div>
+
+                    <div class="time">
+                        <label>Ending Time</label><br />
+                        <input type="time" name="timeEnd" id="viewTimeEnd"/>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="closeModalBtn">Cancel</button>
+                    <button type="submit" class="action-btn">Update Schedule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: url('../images/upangbg.png') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(34, 139, 34, 0.705), rgba(21, 68, 168, 0.6));
+    z-index: 1;
+}
+
+.login-form {
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.password-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    color: #555;
+}
+
+.eye-icon {
+    cursor: pointer;  /* Make the cursor change to a pointer when hovering */
+    transition: fill 0.3s ease;  /* Smooth transition for color changes */
+}
+
+/* .eye-icon:hover {
+    stroke: #378e17;  
+} */
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password, .sign-up {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.forgot-password a, .sign-up a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.forgot-password a:hover, .sign-up a:hover {
+    text-decoration: underline;
+}
+
+.logo-container-login {
+    position: relative;
+    top: .1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+}
+.logo-container-login img {
+    width: 50px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.site-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+#modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 8px 16px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        padding: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #0056b3;
+    }
+
+    .login-form {
+        max-width: 300px;
+    }
+
+    .logo-container-login img {
+        width: 50px;
+        aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-container-login {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}

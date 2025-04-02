@@ -1,0 +1,134 @@
+/* ROOMS */
+.room-container {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 2%;
+    overflow: hidden;
+}
+
+/* Search Bar */
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closemodal {
+    cursor: pointer;
+}
+
+.room-table {
+    border-collapse: separate;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.room-table-wrapper {
+    width: auto;
+}
+
+.room-sched-table {
+    width: 1000;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 90px;
+}
+
+.room-table table th,
+table td {
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.remove-btn {
+    background: #CF2424;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 0;
+}
+
+.room-list {
+    height: auto;
+    width: 100%;
+}
+
+#addScheduleModal {
+    display: none;
+}
+
+/* table media query */
+@media screen and (max-width: 600px) {
+    .room-container {
+        width: 100%;
+    }
+    
+    .room-header {
+        margin: 0px 10px;
+    }
+
+    .table-wrapper {
+        width: auto;
+        padding: 0;
+    }
+
+    .table-wrapper .room-sched {
+        padding: 0;
+    }
+
+    .room-sched thead {
+        font-size: 12px;
+    }
+
+    .room-sched {
+        margin-bottom: 120px;
+    }
+
+    .room-item td {
+        padding: 0px 5px;
+    }
+    .table-data {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .table-data .room-item {
+        margin: 10px;
+    }
+
+    .room-item td:nth-child(5) {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 5px;
+    }
+    .update-btn, .remove-btn {
+        margin-top: 10px;
+        font-size: 12px;
+        padding: 5px;
+    }
+    .table-data tr {
+        padding: 10px;
+    }
+    .table-data td {
+        padding: 0px 5px;
+    }
+}
+
+/* modal media query */
+@media screen and (max-width: 600px) {
+    .modal .modals {
+        width: auto;
+        margin: 10px;
+    }
+
+    .modals form {
+        width: auto;
+    }
+}

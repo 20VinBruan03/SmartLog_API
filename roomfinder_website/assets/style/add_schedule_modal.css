@@ -1,0 +1,204 @@
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-schedule {
+    background-color: white;
+    border-radius: 10px;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modals {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    width: 500px;
+    margin: auto;
+    margin-top: 3.50%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-prompt {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 16.50%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-contents {
+    display: flex;
+    flex-direction: column;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-contents {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.type-buttons button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.time-inputs {
+    display: flex;
+    align-items: center;
+}
+
+.time-inputs span {
+    margin: 0 10px;
+}
+
+.color-picker {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.purple { background-color: #A78BFA; }
+.blue { background-color: #60A5FA; }
+.green { background-color: #34D399; }
+.pink { background-color: #F472B6; }
+.yellow { background-color: #FBBF24; }
+
+.reminder-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.equipment {
+    gap: 15px;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #c6f6d5;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.equipment label {
+    font-size: 14px;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel-btn, .save-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.cancel-btn {
+    background-color: #E5E7EB;
+}
+
+.save-btn {
+    background-color: #4F46E5;
+    color: white;
+}
+
+
+label input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60px;
+}
+
+@media screen and (max-width: 600px) {
+    .modals {
+        width: 100%;
+        margin: 0p;
+    }
+
+    .modal {
+        padding: 0px 0px;
+        margin: 0px 0px;
+    }
+
+    #modal {
+        padding: 0px 0px;
+        margin: 0px 0px;
+    }
+
+    .equipment {
+        padding: 0px 5px;
+    }
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<title>University Room Finder</title>
+
+		<!-- head logo  -->
+		<link
+			rel="icon"
+			href="./assets/images/web-svg-icons/web-logo.svg"
+			type="image/x-icon" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+		<link rel="stylesheet" href="assets/style/home.css" />
+		<link rel="stylesheet" href="assets/style/dashboard.css" />
+		<link rel="stylesheet" href="assets/style/navbar.css" />
+		<link rel="stylesheet" href="assets/style/account.css" />
+		<link rel="stylesheet" href="assets/style/adduser.css" />
+		<link rel="stylesheet" href="assets/style/userslist.css" />
+		<link rel="stylesheet" href="assets/style/table-style.css" />
+		<link rel="stylesheet" href="assets/style/room.css" />
+		<link rel="stylesheet" href="assets/style/room_schedule.css" />
+		<link rel="stylesheet" href="assets/style/request_history.css" />
+		<link rel="stylesheet" href="assets/style/pending_request.css" />
+		<link rel="stylesheet" href="assets/style/modal.css" />
+		<link rel="stylesheet" href="assets/style/toast.css" />
+		<link rel="stylesheet" href="assets/style/ongoing_schedule.css" />
+		<link rel="stylesheet" href="assets/style/search_bar.css" />
+		<link rel="stylesheet" href="assets/style/add_schedule_modal.css" />
+	</head>
+
+	<body>
+		<!-- Navigation Bar -->
+		<div class="navbar navbar__menu">
+			<div class="logo-container">
+				<div style="display: flex; align-items: center">
+					<img
+						src="assets/images/web-svg-icons/web-logo.svg"
+						alt="UPang Logo"
+						class="logo" />
+					<span class="roomsearchTxt">UPang Room Search</span>
+				</div>
+				<div class="profile-container-mobile">
+					<div class="profile-img">
+						<img
+							src="assets/images/web-svg-icons/profile-default.svg"
+							alt="Profile Icon" />
+					</div>
+				</div>
+			</div>
+
+			<!-- Navigation Links -->
+			<div class="navbar-options">
+				<div class="nav-links">
+					<a href="#" class="nav-item" onclick="showSection('dashboard')">
+						<img
+							src="assets/images/web-svg-icons/dashboard-icon.svg"
+							alt="Dashboard Icon" />
+						Dashboard
+					</a>
+
+					<a href="#" class="nav-item" onclick="showSection('room')">
+						<img
+							src="assets/images/web-svg-icons/room-icon.svg"
+							alt="Rooms Icon" />
+						Rooms
+					</a>
+					<a href="#" class="nav-item" onclick="showSection('account')">
+						<img
+							src="assets/images/web-svg-icons/account-icon.svg"
+							alt="Account Icon" />
+						Account
+					</a>
+
+					<!-- Room Requests -->
+					<div class="dropdown">
+						<div class="dropdown-toggle">
+							<div class="dropdown-toggle">
+								<img
+									src="assets/images/web-svg-icons/room-request-icon.svg"
+									alt="Room Requests Icon" />
+								Room Request
+							</div>
+							<img
+								src="assets/images/web-svg-icons/dropdown-arrow.svg"
+								alt="arrow" />
+						</div>
+						<div class="dropdown-menu">
+							<a
+								href="#"
+								class="nav-item"
+								onclick="showSection('pending_request')">
+								Pending Request
+							</a>
+							<a
+								href="#"
+								class="nav-item"
+								onclick="showSection('request_history')">
+								Request History
+							</a>
+						</div>
+					</div>
+
+					<!-- Room Schedule  -->
+					<div class="dropdown">
+						<div class="dropdown-toggle">
+							<div class="dropdown-name">
+								<img
+									src="assets/images/web-svg-icons/room-schedule-icon.svg"
+									alt="Room Schedules Icon" />
+								Room Schedules
+							</div>
+							<img
+								src="assets/images/web-svg-icons/dropdown-arrow.svg"
+								alt="arrow" />
+						</div>
+						<div class="dropdown-menu">
+							<a
+								href="#"
+								class="nav-item"
+								onclick="showSection('ongoing_schedule')">
+								Ongoing Schedules
+							</a>
+							<a
+								href="#"
+								class="nav-item"
+								onclick="showSection('room_schedule')">
+								Room Schedule
+							</a>
+						</div>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown-toggle">
+							<div class="dropdown-toggle">
+								<img
+									src="assets/images/web-svg-icons/auth-icon.svg"
+									alt="Auth Icon" />
+								Authentication
+							</div>
+							<img
+								src="assets/images/web-svg-icons/dropdown-arrow.svg"
+								alt="arrow" />
+						</div>
+
+						<div class="dropdown-menu">
+							<a href="#" id="dropdown-item" onclick="showSection('adduser')"
+								>Add user</a
+							>
+							<a href="#" id="dropdown-item" onclick="showSection ('userslist')"
+								>List of Users</a
+							>
+						</div>
+					</div>
+				</div>
+				<div class="logout-container">
+					<a href="#" class="logoutBtn" onclick="handleLogout(event)">
+						<img
+							src="assets/images/web-svg-icons/logout-icon.svg"
+							alt="Logout Icon" />
+						Logout
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast msg cotainer -->
+		<div id="toast-container" class="toast-container"></div>
+		<div style="display: block; width: 100vw; height: 100vh">
+			<div class="shifting_topbar">
+				<div class="topcontainer">
+					<div class="topbar_container">
+						<div class="navbar__toggle" id="mobile-menu">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</div>
+						<h2></h2>
+					</div>
+					<div class="profile-container">
+						<div class="profile-img">
+							<img
+								src="assets/images/web-svg-icons/profile-default.svg"
+								alt="Profile Icon" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<main class="main_content" id="content">
+				<!-- CONTENT SECTION  -->
+				<div id="loadingSpinner" style="display: none"></div>
+			</main>
+		</div>
+		<script type="module" src="./viewjs/router.js"></script>
+	</body>
+</html>
