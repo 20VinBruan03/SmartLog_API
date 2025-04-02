@@ -11,7 +11,7 @@ class dtrController {
 
     public function __construct() {
         $this->dtrModel = new DTRModel();
-        $this->roomModel = new RoomModel();
+        $this->roomModel = new RoomModel(); 
         $this->roomScheduleModel = new AnnouncementModel();
     }
     
@@ -66,7 +66,7 @@ class dtrController {
         }
     
         // get ongoing schedule
-        $getOngoingSchedules = $this->roomScheduleModel->getAllOngoingSchedules();
+        $getOngoingSchedules = $this->roomScheduleModel->getAllAnnouncement();
         
         foreach ($rooms as &$room) {
             $room['ongoing_schedule'] = (object) [];

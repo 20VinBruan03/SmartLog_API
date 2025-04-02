@@ -9,7 +9,7 @@ class RoomController {
 
     public function __construct() {
         $this->roomModel = new RoomModel();
-        $this->roomScheduleModel = new RoomScheduleModel(); 
+        $this->roomScheduleModel = new AnnouncementModel(); 
     }
 
     //  get room by id
@@ -38,7 +38,7 @@ class RoomController {
         }
     
         // get ongoing schedule of room
-        $ongoingSchedules = $this->roomScheduleModel->getAllOngoingSchedules();
+        $ongoingSchedules = $this->roomScheduleModel->getAllAnnouncement();
     
         foreach ($rooms as &$room) {
 

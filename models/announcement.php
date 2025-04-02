@@ -2,16 +2,16 @@
 
 require_once "../config/database.php";
 
-class RoomScheduleModel {
+class AnnouncementModel {
     private $conn;
 
     public function __construct() {
         $this->conn = Database::getInstance();
     }
 
-    // get all room schedule
-    public function getAllRoomSchedule() {
-        $sql = "SELECT rs.*, r.room_number, room_building FROM room_schedule rs JOIN room r ON rs.room_id = r.id";
+    // get all announcement
+    public function getAllAnnouncement() {
+        $sql = "SELECT * FROM announcement";
         
         if ($stmt = $this->conn->prepare($sql)) {
             $stmt->execute();
@@ -25,23 +25,6 @@ class RoomScheduleModel {
         }
     }
 
-    // get all ongoing schedules
-    public function getAllOngoingSchedules() {
-    date('Y-m-d H:i:s');
-
-    $sql = "SELECT rs.*, r.room_building, r.room_number FROM room_schedule rs JOIN room r ON rs.room_id = r.id WHERE rs.date = CURDATE() AND rs.starting_time <= CURTIME() AND rs.ending_time > CURTIME()";
-
-    if ($stmt = $this->conn->prepare($sql)) {
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
-    } 
-    else {
-        echo json_encode(['message' => 'Error: ' . $this->conn->error]);
-        return [];
-        }
-    }
 
     // get room schedule by room id
     public function getSchedulesByRoomId($roomId) {
@@ -78,18 +61,14 @@ class RoomScheduleModel {
     }
 
     // create room schedule of a room
-    public function createRoomSchedule($room_id, $block, $date, $starting_time, $ending_time) {
-        $sql = "INSERT INTO room_schedule (room_id, block, date, starting_time, ending_time) VALUES (?, ?, ?, ?, ?)";
+    public function createAnnouncement($date, $text) {
+        $sql = "INSERT INTO announcement (date, text) VALUES (?, ?)";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param('issss', $room_id, $block, $date, $starting_time, $ending_time);
+        $stmt->bind_param('ss', $date, $text);
         
-        $stmt->execute();
-        if ($stmt->affected_rows > 0) {
-            return true;
-        } 
-        else {
-            return false;
+        if ($stmt->execute()) {
+            echo json_encode(['message'=> 'Announcement created successfully']);
         }
     }
 

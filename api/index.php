@@ -9,7 +9,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../auth/middleware.php';
 
 // controllers
-require_once '../controller/admin.php';
 require_once '../controller/user.php';
 require_once '../controller/room.php';
 require_once '../controller/dtr.php';
@@ -26,7 +25,6 @@ if (strpos($contentType, 'application/json') === false) {
 }
 
 // instantiate controllers
-$adminController = new AdminController();
 $userController = new UserController();
 $roomController = new RoomController();
 $dtrController = new dtrController();
@@ -267,8 +265,8 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
             break;
 
         case 'POST':
-            if (isset($input['room_id'], $input['block'], $input['date'], $input['starting_time'], $input['ending_time'])) {
-                $roomScheduleController->createRoomSchedule($input['room_id'], $input['block'], $input['date'], $input['starting_time'], $input['ending_time']);
+            if (isset($input['date'], $input['text'])) {
+                $roomScheduleController->createAnnouncement($input['date'], $input['text']);
             } 
             else {
                 echo json_encode(['message' => 'Missing required fields to create room schedule']);
@@ -299,114 +297,16 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
     }
 }
 
-// admin request method handler
-function handleAdmin($requestMethod, $uri, $input, $adminController, $userController) {
-    switch ($requestMethod) {
-        case 'GET':
-            if (preg_match('/\/admin\/(\d+)/', $uri, $matches)) {
-                $adminController->getAdmin($matches[1]);
-            } 
-            elseif (preg_match('/\/admin/', $uri)) {
-                $adminController->getAllUsersAndAdmin();
-            } 
-            else {
-                echo json_encode(['message' => 'Invalid admin request']);
-            }
-            break;
-
-        case 'POST':
-            if (preg_match('/\/admin\/signup/', $uri)) {
-                // create administrators, staff, and teachers
-                if (isset($input['username'], $input['email'], $input['password'], $input['role'])) {
-                    $role = $input['role']; 
-                    if ($role === 'Teacher') {
-                        if (isset($input['teacher_id'])) {
-                            $userController->createUser($input['teacher_id'], $input['username'], $input['email'], $input['password'], $input['role']);
-                        } 
-                        else {
-                            echo json_encode(['message' =>'Teacher ID is missing']);
-                        }
-                    } 
-                    elseif ($role === 'Administrator' || $role === 'Staff') {
-                        // add to the admin table if the role is admin or staff
-                        $adminController->createAdmin($input['username'], $input['email'], $input['password'], $input['role']);
-                    } 
-                    else {
-                        echo json_encode(['message' => 'Invalid role specified']);
-                    }
-                } 
-                else {
-                    echo json_encode(['message' => 'Missing required fields']);
-                }
-            } 
-            elseif (preg_match('/\/admin\/login/', $uri)) {
-                // admin login
-                if (isset($input['email'], $input['password'])) {
-                    $adminController->loginAdmin($input['email'], $input['password']);
-                } 
-                else {
-                    echo json_encode(['message' => 'Missing email or password']);
-                }
-            } 
-            elseif (preg_match('/\/admin\/logout/', $uri)) {
-                // admin or staff logout
-                $Authorization = $_SERVER['HTTP_AUTHORIZATION'] ?? null;
-                if ($Authorization) {
-                    // invalidate token if token is authorized
-                    $adminController->logoutAdmin($Authorization);
-                } 
-            }
-            break;
-
-        case 'PATCH':
-            if (preg_match('/\/admin\/(\d+)/', $uri, $matches)) {
-                $id = $matches[1];
-                if (!empty($input)) {
-                // check if variable old, new, confirm pass is present
-                if (isset($input['old_password']) && isset($input['new_password']) && isset($input['confirm_password'])) {
-                    $oldPassword = $input['old_password'];
-                    $newPassword = $input['new_password'];
-                    $confirmPassword = $input['confirm_password'];
-                    $adminController->changePassword($id, $oldPassword, $newPassword, $confirmPassword);
-                } 
-                else {
-                    // update other input values via updateAdmin
-                    $adminController->updateAdmin($id, $input);
-                }
-            } else {
-                echo json_encode(['message' => 'No fields to update']);
-            }
-        } else {
-            echo json_encode(['message' => 'Invalid user ID']);
-        }
-        break;
-
-        case 'DELETE':
-            if (preg_match('/\/admin\/(\d+)/', $uri, $matches)) {
-                $adminController->deleteAdminById($matches[1]);
-            } 
-            else {
-                echo json_encode(['message' => 'Invalid admin ID']);
-            }
-            break;
-        default:
-            echo json_encode(['message' => 'Method not supported']);
-            break;
-    }
-}
 
 
 
 // main request routing logic
-if (preg_match('/\/admin/', $uri)) {
-    handleAdmin($requestMethod, $uri, $input, $adminController, $userController);
-} 
 
-elseif (preg_match('/\/dtr_request/', $uri)) {
+if (preg_match('/\/dtr_request/', $uri)) {
     handledtr($requestMethod, $uri, $input, $dtrController);
 } 
 
-elseif (preg_match('/\/room_schedule/', $uri)) {
+elseif (preg_match('/\/announcement/', $uri)) {
     handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleController);
 } 
 
