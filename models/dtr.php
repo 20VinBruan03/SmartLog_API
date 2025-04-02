@@ -136,29 +136,21 @@ class DTRModel {
         } 
     }
 
-    // update room request status (approve or reject a pending room request only)
-    public function updateRoomRequestStatus($id, $status) {
+    // update dtr request status (approve or reject a pending dtr request only)
+    public function updateDTRRequestStatus($id, $remarks) {
         $roomRequest = $this->getDTRRequestById($id);
     
         if ($roomRequest) {
             // check if the room request status is pending
-            if ($roomRequest['status'] !== 'Pending') {
+            if ($roomRequest['remarks'] !== 'PENDING') {
                 echo json_encode(['message' => 'Only pending room requests can be updated']);
                 return;
             }
 
-            $sql = "UPDATE room_request SET status = ? WHERE id = ?";
+            $sql = "UPDATE dtr SET remarks = ? WHERE id = ?";
             if ($stmt = $this->conn->prepare($sql)) {
-                $stmt->bind_param('si', $status, $id);
-                if ($stmt->execute()) {
-                    // if the status is approved, add to room schedule
-                    if ($status === 'Approved') {
-                        $this->addToRoomSchedule($roomRequest);
-                    }
-                }  
-                else {
-                    echo json_encode(['message' => 'Error updating room request status: ' . $this->conn->error]);
-                }
+                $stmt->bind_param('si', $remarks, $id);
+                ($stmt->execute());
             } 
             else {
                 echo json_encode(['message' => 'Error preparing SQL: ' . $this->conn->error]);
@@ -166,29 +158,6 @@ class DTRModel {
         } 
         else {
             echo json_encode(['message' => 'Room request not found']);
-        }
-    }
-
-    // helper method to add room request to room schedule
-    private function addToRoomSchedule($roomRequest) {
-        // -1 seconds to ending time before adding to room schedule
-        $adjustedEndTimestamp = strtotime($roomRequest['ending_time']) - 1;
-        $adjustedEndingTime = date('H:i:s', $adjustedEndTimestamp);  
-    
-        $sql = "INSERT INTO room_schedule (room_id, block, date, starting_time, ending_time) 
-                VALUES (?, ?, ?, ?, ?)";
-    
-        if ($stmt = $this->conn->prepare($sql)) {
-            $stmt->bind_param('issss', 
-                $roomRequest['room_id'], $roomRequest['block'],
-                $roomRequest['date'], $roomRequest['starting_time'], $adjustedEndingTime
-            );
-    
-            if (!$stmt->execute()) {
-                echo json_encode(['message' => 'Error inserting into room schedule: ' . $this->conn->error]);
-            }
-        } else {
-            echo json_encode(['message' => 'Error preparing SQL for room schedule: ' . $this->conn->error]);
         }
     }
     

@@ -87,8 +87,8 @@ class AnnouncementModel {
     }
 
     // delete room schedule
-    public function deleteRoomSchedule($id) {
-        $sql = "DELETE FROM room_schedule WHERE id = ?";
+    public function deleteAnnouncementById($id) {
+        $sql = "DELETE FROM announcement WHERE id = ?";
         if ($stmt = $this->conn->prepare($sql)) {
             $stmt->bind_param('i', $id);
             if ($stmt->execute()) {

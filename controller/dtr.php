@@ -154,40 +154,17 @@ class dtrController {
     
     
     // update room request status only (Approved, Rejected)
-    public function updateRoomRequestStatus($id, $status) {
+    public function updateDTRRequestStatus($id, $remarks) {
         
         // check room request exist
-        $roomRequest = $this->dtrModel->getDTRbyUserID($id);
+        $roomRequest = $this->dtrModel->getDTRrequestById($id);
 
         if (!$roomRequest) {
             echo json_encode(['message' => 'Room request not found']);
             return;
         }
-
-        // get request schedule data
-        $room_id = $roomRequest['room_id'];
-        $date = $roomRequest['date'];
-        $starting_time = $roomRequest['starting_time'];
-        $ending_time = $roomRequest['ending_time'];
-
-        // if approved check for conflicts
-        if ($status == 'Approved') {
-            $scheduleConflict = $this->roomScheduleModel->roomScheduleExist($room_id, $date, $starting_time, $ending_time);
-
-            // if schedule conflict, reject 
-            if ($scheduleConflict) {
-                $this->dtrModel->updateRoomRequestStatus($id, 'Rejected');
-                echo json_encode(['status' => 'error', 'message' => 'The room schedule conflicts with an existing room schedule. The request has been automatically rejected.']);
-                return;
-            }
-        }
-
-        // if rejected or no conflict, update status
-        $this->dtrModel->updateRoomRequestStatus($id, $status);
-
-        if ($status == 'Approved' || $status == 'Rejected') {
-            echo json_encode(['status' => 'success', 'message' => 'Room request updated successfully']);
-        }
+        $this->dtrModel->updateDTRRequestStatus($id, $remarks);
+        echo json_encode(['status' => 'success', 'message' => 'Room request updated successfully']);
     }
 
     // delete room request

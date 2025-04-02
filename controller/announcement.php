@@ -3,7 +3,7 @@
 require_once '../models/announcement.php';
 require_once '../models/room.php';
 
-class RoomScheduleController {
+class AnnouncementController {
     private $announcementModel;
     private $roomModel;
 
@@ -13,7 +13,7 @@ class RoomScheduleController {
     }
 
     // get all room schedule
-    public function getAllRoomSchedule() {
+    public function getAllAnnouncement() {
         $roomschedule = $this->announcementModel->getAllAnnouncement();
 
         if (empty($roomschedule)) {
@@ -110,8 +110,8 @@ class RoomScheduleController {
 
 
     // delete room schedule
-    public function deleteRoomSchedule($id) {
-        $this->announcementModel->deleteRoomSchedule($id);
+    public function deleteAnnouncementById($id) {
+        $this->announcementModel->deleteAnnouncementById($id);
     }
 }
 ?>

@@ -28,7 +28,7 @@ if (strpos($contentType, 'application/json') === false) {
 $userController = new UserController();
 $roomController = new RoomController();
 $dtrController = new dtrController();
-$roomScheduleController = new RoomScheduleController();
+$announcementController = new AnnouncementController();
 
 // user method handler
 function handleUser($requestMethod, $uri, $input, $userController) {
@@ -207,11 +207,10 @@ function handledtr($requestMethod, $uri, $input, $dtrController) {
             break;
 
         case 'PATCH':
-            if (preg_match('/\/room_request\/(\d+)/', $uri, $matches)) {
+            if (preg_match('/\/dtr_request\/(\d+)/', $uri, $matches)) {
                 $id = $matches[1]; 
-                
-                if (isset($input['status']) && in_array($input['status'], ['Approved', 'Rejected'])) {
-                    $dtrController->updateRoomRequestStatus($id, $input['status']);
+                if (isset($input['remarks'])) {
+                    $dtrController->updateDTRRequestStatus($id, $input['remarks']);
                 } 
                 else {
                     echo json_encode(['message' => 'Only approved or rejected status update is allowed']);
@@ -244,20 +243,20 @@ function handledtr($requestMethod, $uri, $input, $dtrController) {
 }
 
 // room schedule method handler
-function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleController) {
+function handleAnnouncement($requestMethod, $uri, $input, $announcementController) {
     switch ($requestMethod) {
         case 'GET':
             if (preg_match('/\/room_schedule\/ongoing_schedule/', $uri)) {
-                $roomScheduleController->getAllOngoingSchedules();
+                $announcementController->getAllOngoingSchedules();
             } 
             elseif (preg_match('/\/room_schedule\/room\/(\d+)/', $uri, $matches)) {
-                $roomScheduleController->getRoomSchedulesOfRoom($matches[1]);
+                $announcementController->getRoomSchedulesOfRoom($matches[1]);
             } 
             elseif (preg_match('/\/room_schedule\/(\d+)/', $uri, $matches)) {
-                $roomScheduleController->getRoomSchedule($matches[1]);
+                $announcementController->getRoomSchedule($matches[1]);
             } 
-            elseif (preg_match('/\/room_schedule/', $uri)) {
-                $roomScheduleController->getAllRoomSchedule();
+            elseif (preg_match('/\/announcement/', $uri)) {
+                $announcementController->getAllAnnouncement();
             } 
             else {
                 echo json_encode(['message' => 'Invalid room schedule request']);
@@ -266,7 +265,7 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
 
         case 'POST':
             if (isset($input['date'], $input['text'])) {
-                $roomScheduleController->createAnnouncement($input['date'], $input['text']);
+                $announcementController->createAnnouncement($input['date'], $input['text']);
             } 
             else {
                 echo json_encode(['message' => 'Missing required fields to create room schedule']);
@@ -275,7 +274,7 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
 
         case 'PATCH':
             if (preg_match('/\/room_schedule\/(\d+)/', $uri, $matches)) {
-                $roomScheduleController->updateRoomSchedule($matches[1], $input);
+                $announcementController->updateRoomSchedule($matches[1], $input);
             } 
             else {
                 echo json_encode(['message' => 'Invalid room schedule ID for update']);
@@ -283,8 +282,8 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
             break;
 
         case 'DELETE':
-            if (preg_match('/\/room_schedule\/(\d+)/', $uri, $matches)) {
-                $roomScheduleController->deleteRoomSchedule($matches[1]);
+            if (preg_match('/\/announcement\/(\d+)/', $uri, $matches)) {
+                $announcementController->deleteAnnouncementById($matches[1]);
             } 
             else {
                 echo json_encode(['message' => 'Invalid room schedule ID for deletion']);
@@ -301,13 +300,12 @@ function handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleControlle
 
 
 // main request routing logic
-
 if (preg_match('/\/dtr_request/', $uri)) {
     handledtr($requestMethod, $uri, $input, $dtrController);
 } 
 
 elseif (preg_match('/\/announcement/', $uri)) {
-    handleRoomSchedule($requestMethod, $uri, $input, $roomScheduleController);
+    handleAnnouncement($requestMethod, $uri, $input, $announcementController);
 } 
 
 elseif (preg_match('/\/user/', $uri)) {
